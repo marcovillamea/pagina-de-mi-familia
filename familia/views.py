@@ -11,18 +11,27 @@ def mama(request):
         "mama" : mama
      }
 
-    return render(request, "mama.html",context=context)
+    return render(request, "familiares/mama.html",context=context)
 
 def papa(request):
     papa = familia.objects.create(name = "norberto", tipo_de_familia = "padre", age = 41)
     context = {
         "papa": papa
     }
-    return render(request,"papa.html", context=context)
+    return render(request,"familiares/papa.html", context=context)
 
 def abuela(request):
     abuela = familia.objects.create(name = "noemi", tipo_de_familia = "abuela", age = 65)
     context = {
         "abuela": abuela
     }
-    return render(request,"abuela.html",context=context)
+    return render(request,"familiares/abuela.html",context=context)
+
+def lista_familia(request):
+    nombres = familia.objects.all()
+    context = {
+        "nombres": nombres
+    }
+    
+    return render(request, "familiares/lista_de_familiares.html",context=context)
+
